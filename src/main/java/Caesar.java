@@ -5,23 +5,100 @@ public class Caesar {
     // and returns the encrypted String
     // Ex. encryptCaesar("Hello, World!") => "Khoor, Zruog!"
     public static String encryptCaesar(String message) {
-        // REPLACE THIS WITH YOUR CODE
-        return message;
+        String none = "";
+        for (int i = 0; i < message.length(); i++) {
+            char mes = message.charAt(i);
+            if (mes >= 'A' && mes <= 'W') {
+                mes = (char) (mes + 3);
+                none = none + mes;
+            }
+            else if (mes >= 'a' && mes <= 'w') {
+                mes = (char) (mes + 3);
+                none = none + mes;
+            }
+            else if (mes == 'X') {
+                none = none + "A";
+            }
+            else if (mes == 'Y') {
+                none = none + "B";
+            }
+            else if (mes == 'Z') {
+                none = none + "C";
+            }
+            else if (mes == 'x') {
+                none = none + "a";
+            }
+            else if (mes == 'y') {
+                none = none + "b";
+            }
+            else if (mes == 'z') {
+                none = none + "c";
+            }
+            else {
+                none = none + mes;
+            }
+        }
+        return none;
     }
 
     // Given a String, decrypts the String with the Caesar cipher
     // and returns the original String
     // Ex. decryptCaesar("Khoor, Zruog!") => "Hello, World!"
     public static String decryptCaesar(String message) {
-        // REPLACE THIS WITH YOUR CODE
-        return message;
+        String none = "";
+        for (int i = 0; i < message.length(); i++) {
+            char mes = message.charAt(i);
+            if (mes >= 'D' && mes <= 'Z') {
+                mes = (char) (mes - 3);
+                none = none + mes;
+            }
+            else if (mes >= 'd' && mes <= 'z') {
+                mes = (char) (mes - 3);
+                none = none + mes;
+            }
+            else if (mes == 'A') {
+                none = none + "X";
+            }
+            else if (mes == 'B') {
+                none = none + "Y";
+            }
+            else if (mes == 'C') {
+                none = none + "Z";
+            }
+            else if (mes == 'a') {
+                none = none + "x";
+            }
+            else if (mes == 'b') {
+                none = none + "y";
+            }
+            else if (mes == 'c') {
+                none = none + "z";
+            }
+            else {
+                none = none + mes;
+            }
+        }
+        return none;
     }
 
     // Given a String and a key corresponding to a shift, encrypts
     // the String using the given key and returns the encrypted String
     // Ex. encryptCaesarKey("Hello, World!", 5) => "Mjqqt, Btwqi!".
     public static String encryptCaesarKey(String message, int key) {
-        // REPLACE THIS WITH YOUR CODE
+        String enc_mes = "";
+        for (int i = 0; i < message.length(); i++) {
+            char mes = message.charAt(i);
+            char Zkey = (char) ('Z' - key);
+            char zkey = (char) ('z' - key);
+            if (mes >= 'A' && mes <= Zkey) {
+                mes = (char) (mes + key);
+                enc_mes += mes;
+            }
+            else if (mes >= 'a' && mes <= zkey) {
+                mes = (char) (mes + key);
+                enc_mes += mes;
+            }
+        }
         return message;
     }
 
