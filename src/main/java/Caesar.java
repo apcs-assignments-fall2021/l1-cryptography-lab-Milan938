@@ -86,6 +86,7 @@ public class Caesar {
     // Ex. encryptCaesarKey("Hello, World!", 5) => "Mjqqt, Btwqi!".
     public static String encryptCaesarKey(String message, int key) {
         String enc_mes = "";
+        key = key % 26;
         for (int i = 0; i < message.length(); i++) {
             char mes = message.charAt(i);
             char Zkey = (char) ('Z' - key);
@@ -99,7 +100,7 @@ public class Caesar {
                 enc_mes += mes;
             }
         }
-        return message;
+        return enc_mes;
     }
 
     // Given a String and a key corresponding to a shift, decrypts
