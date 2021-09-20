@@ -102,6 +102,13 @@ public class Caesar {
             else if (mes == 'Z' - key) {
                 return "A";
             }
+            else if (mes >='Z' - key && mes <= 'Z' - key) {
+                mes = (char) (mes + key);
+                enc_mes += mes;
+            }
+            else {
+                enc_mes += mes;
+            }
         }
         return enc_mes;
     }
@@ -149,6 +156,13 @@ public class Caesar {
             System.out.println("Here is your decrypted message: ");
             System.out.println(decryptCaesar(message));
         }
+        else if (command.equals("encryptCaesar")) {
+            System.out.println("Please enter your message to be encrypted: ");
+            String message = scan.nextLine();
+            System.out.println("What key would you like to use?: ");
+            int key = scan.nextInt();
+            System.out.println("Here is your encrypted message: ");
+            System.out.println(encryptCaesarKey(message, key));
         else {
             System.out.println("Unknown command; please type either \"encrypt\" or \"decrypt\"");
         }
