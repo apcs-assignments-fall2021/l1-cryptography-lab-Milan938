@@ -99,6 +99,9 @@ public class Caesar {
                 mes = (char) (mes + key);
                 enc_mes += mes;
             }
+            else if (mes == 'Z' - key) {
+                return "A";
+            }
         }
         return enc_mes;
     }
@@ -107,8 +110,22 @@ public class Caesar {
     // the String using the given key and returns the original String
     // Ex. decryptCaesarKey("Mjqqt, Btwqi!", 5) => "Hello, World!"
     public static String decryptCaesarKey(String message, int key) {
-        // REPLACE THIS WITH YOUR CODE
-        return message;
+        String enc_mes = "";
+        key = key % 26;
+        for (int i = 0; i < message.length(); i++) {
+            char mes = message.charAt(i);
+            char Akey = (char) ('A' + key);
+            char akey = (char) ('a' + key);
+            if (mes >= Akey && mes <= 'Z') {
+                mes = (char) (mes + key);
+                enc_mes += mes;
+            }
+            else if (mes >= akey && mes <= 'z') {
+                mes = (char) (mes + key);
+                enc_mes += mes;
+            }
+        }
+        return enc_mes;
     }
 
 
