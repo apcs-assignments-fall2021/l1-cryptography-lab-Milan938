@@ -99,11 +99,11 @@ public class Caesar {
                 mes = (char) (mes + key);
                 enc_mes += mes;
             }
-            else if (mes == 'Z' - key) {
-                return "A";
-            }
-            else if (mes >='Z' - key && mes <= 'Z' - key) {
-                mes = (char) (mes + key);
+//            else if (mes == 'Z' - key) {
+//                return "A";
+//            }
+            else if (mes >= 'Z' - key && mes <= 'Z') {
+                mes = (char) (mes - (26 - key));
                 enc_mes += mes;
             }
             else {
@@ -124,11 +124,18 @@ public class Caesar {
             char Akey = (char) ('A' + key);
             char akey = (char) ('a' + key);
             if (mes >= Akey && mes <= 'Z') {
-                mes = (char) (mes + key);
+                mes = (char) (mes - key);
                 enc_mes += mes;
             }
             else if (mes >= akey && mes <= 'z') {
-                mes = (char) (mes + key);
+                mes = (char) (mes - key);
+                enc_mes += mes;
+            }
+            else if (mes >= 'A' && mes <= 'A' + key) {
+                mes = (char) (mes + (26 - key));
+                enc_mes += mes;
+            }
+            else {
                 enc_mes += mes;
             }
         }
@@ -163,6 +170,7 @@ public class Caesar {
             int key = scan.nextInt();
             System.out.println("Here is your encrypted message: ");
             System.out.println(encryptCaesarKey(message, key));
+        }
         else {
             System.out.println("Unknown command; please type either \"encrypt\" or \"decrypt\"");
         }
