@@ -2,42 +2,49 @@ import java.util.Scanner;
 
 public class Vigenere {
     public static char encryptCaesarLetter(char ch, int key) {
-        key = key % 26;
-        char mes = ch;
-        char Akey = (char) ('A' + key);
-        char akey = (char) ('a' + key);
-        if (mes >= Akey && mes <= 'Z') {
-            mes = (char) (mes - key);
-        }
-        else if (mes >= akey && mes <= 'z') {
-            mes = (char) (mes - key);
-        }
-        else if (mes >= 'A' && mes <= 'A' + key) {
-            mes = (char) (mes + (26 - key));
-        }
-        else {
-        }
-        return mes;
+        String str = ch + "";
+        String encrypted = Caesar.encryptCaesarKey(str, key);
+        return encrypted.charAt(0);
+//        key = key % 26;
+//        char mes = ch;
+//        char Akey = (char) ('A' + key);
+//        char akey = (char) ('a' + key);
+//        if (mes >= Akey && mes <= 'Z') {
+//            mes = (char) (mes - key);
+//        }
+//        else if (mes >= akey && mes <= 'z') {
+//            mes = (char) (mes - key);
+//        }
+//        else if (mes >= 'A' && mes <= 'A' + key) {
+//            mes = (char) (mes + (26 - key));
+//        }
+//        else {
+//        }
+//        return mes;
     }
 
     public static char decryptCaesarLetter(char ch, int key) {
-        key = key % 26;
-        char mes = ch;
-        char Akey = (char) ('A' + key);
-        char akey = (char) ('a' + key);
-        if (mes >= Akey && mes <= 'Z') {
-            mes = (char) (mes - key);
-        }
-        else if (mes >= akey && mes <= 'z') {
-            mes = (char) (mes - key);
-        }
-        else if (mes >= 'A' && mes <= 'A' + key) {
-            mes = (char) (mes + (26 - key));
-        }
-        else {
-        }
-        return mes;
+        String str = ch + "";
+        String encrypted = Caesar.decryptCaesarKey(str, key);
+        return encrypted.charAt(0);
     }
+//        key = key % 26;
+//        char mes = ch;
+//        char Akey = (char) ('A' + key);
+//        char akey = (char) ('a' + key);
+//        if (mes >= Akey && mes <= 'Z') {
+//            mes = (char) (mes - key);
+//        }
+//        else if (mes >= akey && mes <= 'z') {
+//            mes = (char) (mes - key);
+//        }
+//        else if (mes >= 'A' && mes <= 'A' + key) {
+//            mes = (char) (mes + (26 - key));
+//        }
+//        else {
+//        }
+//        return mes;
+//    }
 
 
     public static String encryptVigenere(String message, String key) {
@@ -47,10 +54,13 @@ public class Vigenere {
             char sassy = message.charAt(i);
             char letter = key.charAt(keyindex);
             int shift = letter - 'A';
-            keyindex += 1;
             enc_mes += encryptCaesarLetter(sassy, shift);
-            if (keyindex == key.length()) {
-                keyindex = 0;
+            if (sassy >= 'A' && sassy <= 'Z' || sassy >= 'a' && sassy <= 'z') {
+//                System.out.println(sassy + " " + shift);
+                keyindex += 1;
+                if (keyindex == key.length()) {
+                    keyindex = 0;
+                }
             }
         }
         return enc_mes;
@@ -63,10 +73,19 @@ public class Vigenere {
             char sassy = message.charAt(i);
             char letter = key.charAt(keyindex);
             int shift = letter - 'A';
-            keyindex += 1;
             enc_mes += decryptCaesarLetter(sassy, shift);
-            if (keyindex == key.length()) {
-                keyindex = 0;
+            if (sassy >= 'A' && sassy <= 'Z') {
+                keyindex += 1;
+                if (keyindex == key.length()) {
+                    keyindex = 0;
+                }
+            } else if (sassy >= 'a' && sassy <= 'z') {
+                keyindex += 1;
+                if (keyindex == key.length()) {
+                    keyindex = 0;
+                }
+            } else {
+
             }
         }
         return enc_mes;
