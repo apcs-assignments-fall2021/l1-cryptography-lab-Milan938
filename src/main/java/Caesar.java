@@ -102,7 +102,7 @@ public class Caesar {
 //            else if (mes == 'Z' - key) {
 //                return "A";
 //            }
-            else if (mes >= 'Z' - key && mes <= 'Z') {
+            else if (mes >= 'Z' - key && mes <= 'Z' || mes >= 'z' - key && mes <= 'z') {
                 mes = (char) (mes - (26 - key));
                 enc_mes += mes;
             }
@@ -131,7 +131,7 @@ public class Caesar {
                 mes = (char) (mes - key);
                 enc_mes += mes;
             }
-            else if (mes >= 'A' && mes <= 'A' + key) {
+            else if (mes >= 'A' && mes <= 'A' + key || mes >= 'a' && mes <= 'a' + key) {
                 mes = (char) (mes + (26 - key));
                 enc_mes += mes;
             }
